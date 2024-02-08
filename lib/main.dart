@@ -1,3 +1,4 @@
+import 'package:appmania/view/screens/cart_screen.dart';
 import 'package:appmania/view/screens/home_screen.dart';
 import 'package:appmania/view/screens/splash_screen.dart';
 import 'package:appmania/view/screens/user_screen.dart';
@@ -10,7 +11,8 @@ void main() {
     routes: {
       '/': (context) => const SplashScreen(),
       '/home': (context) => const HomeScreen(),
-      '/user': (context) => const UserProfile()
+      '/user': (context) => const UserProfile(),
+      '/cart': (context) => const Cart()
     },
   ));
 }
