@@ -204,7 +204,7 @@ class _HomeScreenState extends State<HomeScreen> {
       child: Container(
         alignment: Alignment.center,
         padding: const EdgeInsets.symmetric(vertical: 8),
-        height: height / 4.8,
+        height: height / 4.5,
         decoration: BoxDecoration(
           color: lightGreenContainer,
           borderRadius: BorderRadius.circular(25),
@@ -247,11 +247,14 @@ class _HomeScreenState extends State<HomeScreen> {
             //favourite list
             Expanded(
               flex: 2,
-              child: SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                    children: List.generate(offerImg.length,
-                        (index) => offerImageContainer(offerImg[index]))),
+              child: Padding(
+                padding: const EdgeInsets.only(bottom: 10),
+                child: SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                      children: List.generate(offerImg.length,
+                          (index) => offerImageContainer(offerImg[index]))),
+                ),
               ),
             ),
           ],
