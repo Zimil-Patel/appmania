@@ -18,8 +18,9 @@ class _HomeScreenState extends State<HomeScreen> {
       children: [
         //custom app/top bar
         customAppBar(),
-        //paritionLine(),
+
         //grey parition line
+        paritionLine(),
 
         //main body
         Expanded(
@@ -64,17 +65,17 @@ class _HomeScreenState extends State<HomeScreen> {
       title: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             'Delivery address',
             style: TextStyle(
-                fontSize: 12, color: Colors.grey, fontWeight: FontWeight.w500),
+                fontSize: 12,
+                color: lightFontColor,
+                fontWeight: FontWeight.w500),
           ),
           Text(
             address,
             style: TextStyle(
-                fontSize: 15,
-                color: Colors.grey.shade700,
-                fontWeight: FontWeight.w600),
+                fontSize: 15, color: fontColor, fontWeight: FontWeight.w600),
           ),
         ],
       ),
@@ -100,7 +101,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ' Cart',
                   style: TextStyle(
                       fontSize: 14,
-                      color: Colors.grey.shade800,
+                      color: fontColor,
                       fontWeight: FontWeight.w600),
                 )
               ],
