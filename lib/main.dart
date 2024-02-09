@@ -1,5 +1,5 @@
 import 'package:appmania/view/screens/cart_screen.dart';
-import 'package:appmania/view/screens/home_screen.dart';
+import 'package:appmania/view/screens/Home/home_screen.dart';
 import 'package:appmania/view/screens/splash_screen.dart';
 import 'package:appmania/view/screens/user_screen.dart';
 import 'package:flutter/material.dart';

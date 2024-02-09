@@ -9,5 +9,7 @@ List brandImg = [
   'asset/images/Brands/apple.png',
   'asset/images/Brands/asus.png',
   'asset/images/Brands/dell.png',
+  'asset/images/Brands/onePlus.png',
   'asset/images/Brands/hp.png',
+  'asset/images/Brands/acer.png',
 ];
