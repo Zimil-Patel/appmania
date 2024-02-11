@@ -1,13 +1,11 @@
-import 'dart:math';
-
 import 'package:appmania/utils/colors/colors.dart';
 import 'package:appmania/utils/lists/image_list.dart';
 import 'package:appmania/utils/lists/product_data.dart';
 import 'package:appmania/utils/users/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_shadow_container/scroll_shadow_container.dart';
-import 'package:google_fonts/google_fonts.dart';
 
+import '../product_screen.dart';
 import 'glass_morphism.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -27,39 +25,39 @@ class _HomeScreenState extends State<HomeScreen> {
     height = MediaQuery.of(context).size.height;
 
     return Scaffold(
+        appBar: customAppBar(),
         body: Column(
-      children: [
-        //custom app/top bar
-        customAppBar(),
+          children: [
 
-        //center bar
-        centerBar(),
+            //center bar
+            centerBar(),
 
-        //partition bar
-        partitionLine(),
+            //partition bar
+            partitionLine(),
 
-        Expanded(
-            child: ScrollShadowContainer(
-                elevation: MaterialElevation.the2dp,
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      //OFFER BANNER AND FAVOURITES
-                      offerAndFavouriteBox(),
+            Expanded(
+                child: ScrollShadowContainer(
+                    elevation: MaterialElevation.the2dp,
+                    child: SingleChildScrollView(
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          //OFFER BANNER AND FAVOURITES
+                          offerAndFavouriteBox(),
 
-                      partitionLine(),
+                          partitionLine(),
 
-                      //popular brand list
-                      brandBox(),
+                          //popular brand list
+                          brandBox(),
 
-                      //product list
-                      productList()
-                    ],
-                  ),
-                )))
-      ],
-    ));
+                          //product list
+                          productList()
+                        ],
+                      ),
+                    )))
+          ],
+        ));
   }
 
   //custom app bar
@@ -133,7 +131,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
   //center bar
   Widget centerBar() {
     return Container(
@@ -195,7 +192,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
   //partition line
   Widget partitionLine() {
     return Padding(
@@ -206,7 +202,6 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
-
 
   //offer and favourite bar
   Widget offerAndFavouriteBox() {
@@ -231,8 +226,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   opacity: 0.2,
                   child: Container(
                     alignment: Alignment.center,
-                    decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(25)),
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(25)),
                     child: Row(
                       children: [
                         Expanded(
@@ -298,11 +293,9 @@ class _HomeScreenState extends State<HomeScreen> {
   //popular brands container
   Widget brandBox() {
     return Container(
-
       alignment: Alignment.center,
       height: height / 7,
       decoration: BoxDecoration(
-        color: whiteContainer,
         borderRadius: BorderRadius.circular(25),
       ),
       child: Column(
@@ -310,20 +303,21 @@ class _HomeScreenState extends State<HomeScreen> {
           //popular brand text
           Expanded(
             child: Container(
-              decoration:
-                  BoxDecoration(
-                    color: whiteContainer,
-                      borderRadius: BorderRadius.circular(25)),
+              decoration: BoxDecoration(
+                  color: whiteContainer,
+                  borderRadius: BorderRadius.circular(25)),
               child: Row(
                 children: [
                   Expanded(
                     child: Padding(
                         padding: const EdgeInsets.only(left: 20),
-                        child: Text('Popular Brands',
+                        child: Text(
+                          'Popular Brands',
                           style: TextStyle(
-                              color: fontColor, fontSize: 16, fontWeight: FontWeight.w700),
-                        )
-                    ),
+                              color: fontColor,
+                              fontSize: 16,
+                              fontWeight: FontWeight.w700),
+                        )),
                   ),
                   Padding(
                     padding: const EdgeInsets.only(right: 18.0),
@@ -364,7 +358,8 @@ class _HomeScreenState extends State<HomeScreen> {
             borderRadius: BorderRadius.circular(15),
             color: whiteContainer,
             boxShadow: [
-              BoxShadow(blurRadius: 5, spreadRadius: 0, color: Colors.grey.shade300)
+              BoxShadow(
+                  blurRadius: 5, spreadRadius: 0, color: Colors.grey.shade300)
             ]),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 6),
@@ -380,40 +375,34 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-
   // product list
-  Widget productList(){
+  Widget productList() {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Expanded(
-            child: Column(
-              children: List.generate(productData1.length, (index) => productContainer(rightMargin: 5, list: productData1 ,index: index))
-            ),
-          ),
-          Expanded(
-            child: Column(
-              children: List.generate(productData2.length, (index) => productContainer(leftMargin: 5, list: productData2, index: index))
-            ),
-          ),
-        ],
-      ),
+      child: GridView.extent(
+          maxCrossAxisExtent: 300,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+          physics: const NeverScrollableScrollPhysics(),
+          shrinkWrap: true,
+          children: List.generate(
+              productData1.length, (index) => productContainer(index: index))),
     );
   }
 
-  Widget productContainer({double? rightMargin, double? leftMargin, required var list, required int index}) {
-
-      return Container(
-        margin: const EdgeInsets.all(10),
+  Widget productContainer(
+      {double? rightMargin, double? leftMargin, required int index}) {
+    return GestureDetector(
+      onTap: (){
+        Navigator.of(context).pushNamed('/product', arguments: productData1[index]);
+        productIndex = index;
+      },
+      child: Container(
         height: 200,
         decoration: BoxDecoration(
           color: Colors.grey.shade300,
           borderRadius: BorderRadiusDirectional.circular(20),
         ),
-
         child: GlassMorphism(
           blur: 30,
           opacity: 0.2,
@@ -421,19 +410,19 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               Expanded(
                 child: Container(
-                  decoration: BoxDecoration(
-                      color: lightGreyProductBox,
-                      borderRadius: const BorderRadius.only(topLeft: Radius.circular(20), topRight: Radius.circular(20))
-                  ),
+                    decoration: BoxDecoration(
+                        color: lightGreyProductBox,
+                        borderRadius: const BorderRadius.only(
+                            topLeft: Radius.circular(20),
+                            topRight: Radius.circular(20))),
                     child: Column(
                       children: [
                         Expanded(
-                          flex: 1,
+                            flex: 1,
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 10),
                               child: Row(
                                 children: [
-
                                   //color selector box
                                   Expanded(
                                     flex: 4,
@@ -445,7 +434,6 @@ class _HomeScreenState extends State<HomeScreen> {
                                     ),
                                   ),
 
-
                                   // add to cart button
                                   Expanded(
                                     flex: 3,
@@ -454,51 +442,78 @@ class _HomeScreenState extends State<HomeScreen> {
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
                                           color: Colors.white,
-                                          borderRadius: BorderRadiusDirectional.circular(15)
+                                          borderRadius:
+                                              BorderRadiusDirectional.circular(
+                                                  15)),
+                                      child: const Text(
+                                        '+ Add',
+                                        style: TextStyle(
+                                            fontSize: 10, color: Colors.blue),
                                       ),
-                                      child: const Text('+ Add',
-                                        style: TextStyle(fontSize: 10, color: Colors.blue),),
                                     ),
                                   ),
-                                ],
-                              ),
-                            )
-                        ),
-
-                        //image and fav button
-                        Expanded(
-                          flex: 3,
-                            child: Center(
-                              child: Stack(
-                                children: [
-                                  //product image
-                                  Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadiusDirectional.circular(15)
-                                    ),
-                                    child: ClipRRect(
-                                      borderRadius: BorderRadiusDirectional.circular(10),
-                                      child: Image.network(list[index]['img'], fit: BoxFit.cover,),
-                                    ),
-                                  ),
-
-
-                                  // favourite button
-                                  const Positioned(
-                                    right: 8,
-                                    top: 5,
-                                    child: GlassMorphism(blur: 20, opacity: 0.2, child: Padding(
-                                      padding: EdgeInsets.all(4.0),
-                                      child: Icon(Icons.favorite_border_outlined,
-                                        size: 16,),
-                                    )),
-                                  )
                                 ],
                               ),
                             )),
+
+                        //image and fav button
+                        Expanded(
+                            flex: 3,
+                            child: Center(
+                              child: SizedBox(
+                                width: double.infinity,
+                                child: Stack(
+                                  children: [
+                                    //product image
+                                    Container(
+                                      alignment: Alignment.center,
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadiusDirectional.circular(
+                                                  15)),
+                                      child: ClipRRect(
+                                        borderRadius:
+                                            BorderRadiusDirectional.circular(10),
+                                        child: Image.asset(
+                                          productData1[index]['img'],
+                                          fit: BoxFit.cover,
+                                        ),
+                                      ),
+                                    ),
+
+                                    // favourite button
+                                    Positioned(
+                                      right: 8,
+                                      top: 5,
+                                      child: InkWell(
+                                        onTap: (){
+                                          setState(() {
+                                            productData1[index]['favourite'] = !productData1[index]['favourite'];
+                                          });
+                                        },
+                                        child: GlassMorphism(
+                                            blur: 20,
+                                            opacity: 0.2,
+                                            child: Padding(
+                                              padding: const EdgeInsets.all(4.0),
+                                              child: Icon(
+                                                (!productData1[index]['favourite'])
+                                                    ? Icons.favorite_border_outlined
+                                                    : Icons.favorite,
+                                                size: 16,
+                                                color: (!productData1[index]['favourite'])
+                                                  ? Colors.black
+                                                  : Colors.red,
+                                              ),
+                                            )),
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              ),
+                            )),
                       ],
-                    )
-                ),
+                    )),
               ),
 
               //product brand name and button
@@ -514,22 +529,27 @@ class _HomeScreenState extends State<HomeScreen> {
                           padding: const EdgeInsets.only(left: 14.0, top: 8),
                           child: Row(
                             children: [
-                              Text(list[index]['brand'], style: TextStyle(color: lightFontColor, fontSize: 10),)
+                              Text(
+                                productData1[index]['brand'],
+                                style: TextStyle(
+                                    color: lightFontColor, fontSize: 10),
+                              )
                             ],
                           ),
                         ),
-                    
+
                         //product name
                         Padding(
-                          padding: const EdgeInsets.only(left: 14.0, bottom: 10, top: 0),
+                          padding: const EdgeInsets.only(
+                              left: 14.0, bottom: 10, top: 0),
                           child: Row(
                             children: [
-                              Text(list[index]['name'],
+                              Text(
+                                productData1[index]['name'],
                                 style: TextStyle(
                                     color: fontColor,
                                     fontSize: 10,
-                                    fontWeight: FontWeight.w600
-                                ),
+                                    fontWeight: FontWeight.w600),
                               )
                             ],
                           ),
@@ -537,18 +557,18 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-
                   Expanded(
                     child: Container(
                       height: 20,
                       alignment: Alignment.center,
-                      margin: EdgeInsets.all(8),
+                      margin: const EdgeInsets.all(8),
                       decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadiusDirectional.circular(15)
+                          color: Colors.white,
+                          borderRadius: BorderRadiusDirectional.circular(15)),
+                      child: Text(
+                        '\$${productData1[index]['price']}',
+                        style: const TextStyle(fontSize: 10, color: Colors.blue),
                       ),
-                      child: Text('\$${list[index]['price']}',
-                        style: const TextStyle(fontSize: 10, color: Colors.blue),),
                     ),
                   )
                 ],
@@ -556,12 +576,12 @@ class _HomeScreenState extends State<HomeScreen> {
             ],
           ),
         ),
-      );
-
+      ),
+    );
   }
 
   //color selector box
-  Widget colorBox(Color color, bool selected){
+  Widget colorBox(Color color, bool selected) {
     return Container(
       height: 16,
       width: 16,
@@ -570,8 +590,9 @@ class _HomeScreenState extends State<HomeScreen> {
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadiusDirectional.circular(100),
-          border: Border.all(color: selected ? color : const Color(0xfff7f7f7), width: selected ? 1.5 : 0)
-      ),
+          border: Border.all(
+              color: selected ? color : const Color(0xfff7f7f7),
+              width: selected ? 1.5 : 0)),
       child: Container(
         decoration: BoxDecoration(
           color: color,
@@ -580,9 +601,8 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
     );
   }
+
   void navigateTo(String screenName) {
     Navigator.of(context).pushNamed(screenName);
   }
-
-
 }

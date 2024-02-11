@@ -3,74 +3,140 @@ List productData1 = [
     'id' : 1,
     'name' : 'MackBook Air M1',
     'brand' : 'Apple',
-    'img' : 'https://www.livemint.com/lm-img/img/2023/10/01/1600x900/macbook_pro_1634580340025_1696138183858.jpg',
-    'price' : 999.9
+    'img' : 'asset/images/Products/macBookAirM1.png',
+    'price' : 999.9,
+    'description' : 'Retina display\n13.3-inch (diagonal) LED-backlit display with IPS technology; 2560x1600 native resolution at 227 pixels per inch with support for millions of colours\nSupported scaled resolutions:\n1680x1050\n1440x900\n1024x640\n400 nits brightness\nWide colour (P3)\nTrue Tone technology',
+    'rating' : 4.5,
+    'review' : 2456,
+    'like' : 94,
+    'quantity' : 0,
+    'inCart' : false,
+    'favourite' : false
   },
   {
     'id' : 2,
     'name' : 'MackBook Pro M3',
     'brand' : 'Apple',
-    'img' : 'https://akm-img-a-in.tosshub.com/indiatoday/images/story/202310/macbook-pro-024011822-16x9_0.png?VersionId=CKXbmiOLkA_16ma0JbaKUxCWDp1WgA3t&size=690:388',
-    'price' : 2277
+    'img' : 'asset/images/Products/macBookProM3.png',
+    'price' : 2277,
+    'description' : 'MacBook Pro 14-inch (M3, 2023) is a macOS laptop with a 14.20-inch display that has a resolution of 1964x3024 pixels. It is powered by a Apple M3 processor and it comes with 8GB of RAM. The MacBook Pro 14-inch (M3, 2023) packs 512GB of SSD storage.\nConnectivity options include Wi-Fi 802.11 ax, Bluetooth and it comes with 3 USB ports (3 x Thunderbolt 3 (Type C)), HDMI Port, Multi Card Slot, Headphone and Mic Combo Jack ports.',
+    'rating' : 4.5,
+    'review' : 1456,
+    'like' : 98,
+    'quantity' : 0,
+    'inCart' : false,
+    'favourite' : true
   },
   {
     'id' : 3,
     'name' : 'MackBook Pro M2',
     'brand' : 'Apple',
-    'img' : 'https://www.apple.com/newsroom/images/product/mac/standard/Apple-MacBook-Pro-M2-13-availability-June-2022-hero_big.jpg.slideshow-xlarge_2x.jpg',
-    'price' : 1505.9
+    'img' : 'asset/images/Products/MackBookProM2.png',
+    'price' : 1505.9,
+    'description' : 'Apple M2 chip\n8-core CPU with 4 performance cores and 4 efficiency cores\n10-core GPU\n16-core Neural Engine\n100GB/s memory bandwidth\nRetina display\n13.3-inch (diagonal) LED-backlit display with IPS technology; 2560x1600 native resolution at 227 pixels per inch with support for millions of colours\n500 nits brightness\nWide colour (P3)\nTrue Tone technology',
+    'rating' : 4.0,
+    'review' : 3500,
+    'like' : 80,
+    'quantity' : 0,
+    'inCart' : false,
+    'favourite' : true
   },
   {
     'id' : 4,
     'name' : 'MackBook Air M2',
     'brand' : 'Apple',
-    'img' : 'https://www.apple.com/in/macbook-air-13-and-15-m2/images/overview/performance/performance-hero_endframe__fd4dcihgw8ya_large.jpg',
-    'price' : 1614.3
+    'img' : 'asset/images/Products/MackBookAirM2.png',
+    'price' : 1614.3,
+    'description' : 'Apple M2 chip\n8-core CPU with 4 performance cores and 4 efficiency cores\n8-core GPU\n16-core Neural Engine\n100GB/s memory bandwidth\nConfigurable to M2 with 8-core CPU and 10-core GPULiquid\nRetina display\n13.6-inch (diagonal) LED-backlit display with IPS technology;1 2560x1664 native resolution at 224 pixels per inch\n500 nits brightness',
+    'rating' : 4.5,
+    'review' : 1432,
+    'like' : 95,
+    'quantity' : 0,
+    'inCart' : false,
+    'favourite' : false
   },
   {
     'id' : 5,
     'name' : 'Mac Mini M2',
     'brand' : 'Apple',
-    'img' : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREMb_5hfSa4qNiV-AbWgVWJYdVmbpt4qV9NQ&usqp=CAU',
-    'price' : 1457.7
+    'img' : 'asset/images/Products/MacMiniM2.png',
+    'price' : 1457.7,
+    'description' : 'M2 Pro chip for exceptional speed and performance\nUp to 12-core CPU packs up to 1.9x faster performance for editing massive images\nUp to 19-core GPU with up to 2.6x faster performance for video editing and 3D modelling\nPowerful media engine with support for H.264, HEVC, ProRes video\n16-core Neural Engine for advanced machine learning\n16GB or 32GB of unified memory, so everything you do is fast and fluid\nSuperfast SSD storage launches apps and opens files in an instant\nSupports up to three displays\nAdvanced cooling system sustains outstanding performance\nFast Wi-Fi 6E wireless connectivity\nFour Thunderbolt 4 ports, one HDMI port, two USB-A ports, headphone jack, Gigabit or 10Gb Ethernet\nUltra-compact 19.70 cm (7.7-inch) square design in silver\nmacOS Ventura gives you powerful new ways to get more done, share and collaborate — across all your Apple devices',
+    'rating' : 5.0,
+    'review' : 1423,
+    'like' : 90,
+    'quantity' : 0,
+    'inCart' : false,
+    'favourite' : false
   },
-
-];
-
-List productData2 = [
   {
-    'id' : 1,
+    'id' : 6,
     'name' : 'Asus Vivobook 15',
     'brand' : 'Asus',
-    'img' : 'https://www.notebookcheck.net/uploads/tx_nbc2/k513.jpg',
-    'price' : 649.3
+    'img' : 'asset/images/Products/AsusVivobook15.png',
+    'price' : 649.3,
+    'description' : 'Asus Vivobook 15 Summary\nAsus Vivobook 15 is a Windows 11 laptop with a 15.60-inch display. It is powered by a Core i5 processor and it comes with 8GB of RAM.\nConnectivity options include Bluetooth and it comes with USB 3.2 Gen 1 (Type A), USB 3.2 Gen 2 (Type C), HDMI Port, Mic In ports.\nAs of 11th February 2024, Asus Vivobook 15 price in India starts at Rs. 49,990.',
+    'rating' : 4.5,
+    'review' : 2417,
+    'like' : 96,
+    'quantity' : 0,
+    'inCart' : false,
+    'favourite' : true
   },
   {
-    'id' : 2,
+    'id' : 7,
     'name' : 'HP Victus Gaming',
     'brand' : 'HP',
-    'img' : 'https://www.hp.com/ca-en/shop/Html/Merch/Images/c08519802_1750x1285.jpg',
-    'price' : 685.5
+    'img' : 'asset/images/Products/HPVictusGaming.png',
+    'price' : 685.5,
+    'description' : 'Windows 11 HomeIntel® Core™ i5-13500H (up to 4.7 GHz, 18 MB L3 cache, 12 cores, 16 threads) + NVIDIA® GeForce RTX™ 3050 Laptop GPU (6 GB)8 GB DDR4-3200 SDRAM (2 X 4 GB)512 GB PCIe® NVMe™ TLC M.2 SSD (4x4 SSD)',
+    'rating' : 4.2,
+    'review' : 2862,
+    'like' : 70,
+    'quantity' : 0,
+    'inCart' : false,
+    'favourite' : false
   },
   {
-    'id' : 3,
+    'id' : 8,
     'name' : 'Acer Nitro 16',
     'brand' : 'Acer',
-    'img' : 'https://cashkar.in/blogs/wp-content/uploads/2023/07/Black-and-White-Vlogger-End-Screen-YouTube-Outro-Thumbnail-1-14.png',
-    'price' : 1565.7
+    'img' : 'asset/images/Products/AcerNitro16.png',
+    'price' : 1565.7,
+    'description' : 'Powered by a 3.2 GHz AMD Ryzen 7 7735HS 8-Core processor and 16GB of DDR5 RAM, this gaming laptop can handle all your games and apps with ease. The 512GB SSD allows for fast boot and load times, so you can get into the action faster. The NVIDIA GeForce RTX 4070 features 8GB of GDDR6 VRAM and can provide real-time raytracing and DLSS support. The 16" IPS display features a QHD+ 2560 x 1600 resolution, a 16:10 aspect ratio, and a 165 Hz refresh rate. You can also output to an external display via HDMI 2.1.',
+    'rating' : 4.7,
+    'review' : 1278,
+    'like' : 80,
+    'quantity' : 0,
+    'inCart' : false,
+    'favourite' : false
   },
   {
-    'id' : 4,
+    'id' : 9,
     'name' : 'HP Chrome X360',
     'brand' : 'HP',
-    'img' : 'https://www.notebookcheck.net/uploads/tx_nbc2/4zu3_HP_Chromebook_x360_14_G1.jpg',
-    'price' : 325.1
+    'img' : 'asset/images/Products/HPChromeX360.png',
+    'price' : 325.1,
+    'description' : 'Microprocessor : Intel® Core™ i3-8130U (2.2 GHz base frequency, up to 4 GHz with Intel® Turbo Boost Technology, 4 MB cache, 2 cores)\nMemory, standard : 8 GB DDR4-2400 SDRAM (onboard)\nVideo graphics : Intel® UHD Graphics 620 Integrated\nHard drive : 64 GB eMMC\nDisplay : 14" diagonal FHD IPS micro-edge WLED-backlit multitouch-enabled edge-to-edge glass (1920 x 1080)\nWireless connectivity : Intel® 802.11b/g/n/ac (2x2) Wi-Fi® and Bluetooth® 4.2 Combo\nExpansion slots : 1 microSD media card reader\nExternal ports : 2 USB 3.1 Gen 1 Type-C™ (Charging, power delivery, video, data); 2 USB 3.1 Gen 1 (HP Sleep and Charge); 1 headphone/microphone combo\nMinimum dimensions (W x D x H) : 32.54 x 22.68 x 1.6 cm\nWeight : 1.67 kg',
+    'rating' : 4.6,
+    'review' : 4253,
+    'like' : 92,
+    'quantity' : 0,
+    'inCart' : false,
+    'favourite' : true
   },
   {
-    'id' : 5,
+    'id' : 10,
     'name' : 'Dell G15-5520',
     'brand' : 'Dell',
-    'img' : 'https://i.dell.com/is/image/DellContent/content/dam/ss2/product-images/dell-client-products/notebooks/g-series/g15-5521-se/media-gallery/g15-5521-se-bk-rgbkb-115w/notebook-g-15-5521-gallery-4.psd?fmt=pjpg&pscan=auto&scl=1&wid=4176&hei=2845&qlt=100,1&resMode=sharp2&size=4176,2845&chrss=full&imwidth=5000',
-    'price' : 831.16
+    'img' : 'asset/images/Products/DellG155520.png',
+    'price' : 831.16,
+    'description' : 'Dell G15 (5520) is a Windows 11 laptop with a 15.60-inch display that has a resolution of 1920x1080 pixels. It is powered by a Core i5 processor and it comes with 16GB of RAM.Graphics are powered by Nvidia GeForce RTX 3050. Connectivity options include Wi-Fi 802.11 a/b/g/n/ac/ax, Ethernet and it comes with 3 USB ports (1 x USB 3.1 Gen 1 (Type C)), USB 3.2 Gen 1 (Type A), HDMI Port, Headphone and Mic Combo Jack, RJ45 (LAN) ports.As of 11th February 2024, Dell G15 (5520) price in India starts at Rs. 68,990.',
+    'rating' : 4.0,
+    'review' : 4253,
+    'like' : 99,
+    'quantity' : 0,
+    'inCart' : false,
+    'favourite' : false
   },
 ];

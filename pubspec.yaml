@@ -64,6 +64,7 @@ flutter:
   assets:
     - asset/images/OfferBanner/
     - asset/images/Brands/
+    - asset/images/Products/
     - asset/images/
 
   # An image asset can refer to one or more resolution-specific "variants", see
