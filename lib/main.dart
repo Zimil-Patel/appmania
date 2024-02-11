@@ -1,14 +1,15 @@
-import 'package:appmania/view/screens/cart_screen.dart';
+import 'package:appmania/view/screens/Cart/cart_screen.dart';
 import 'package:appmania/view/screens/Home/home_screen.dart';
-import 'package:appmania/view/screens/product_screen.dart';
-import 'package:appmania/view/screens/splash_screen.dart';
-import 'package:appmania/view/screens/user_screen.dart';
+import 'package:appmania/view/screens/Product/product_screen.dart';
+import 'package:appmania/view/screens/Splash/splash_screen.dart';
+import 'package:appmania/view/screens/User/user_screen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
   runApp(MaterialApp(
+    title: 'Digital Cart',
     debugShowCheckedModeBanner: false,
-    initialRoute: '/home',
+    initialRoute: '/',
     routes: {
       '/': (context) => const SplashScreen(),
       '/home': (context) => const HomeScreen(),

@@ -1,8 +1,10 @@
 import 'package:appmania/utils/colors/colors.dart';
+import 'package:appmania/utils/lists/cart_list.dart';
 import 'package:appmania/utils/users/user_data.dart';
+import 'package:appmania/view/screens/Cart/cart_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_shadow_container/scroll_shadow_container.dart';
-import '../../utils/lists/product_data.dart';
+import '../../../utils/lists/product_data.dart';
 
 class ProductScreen extends StatefulWidget {
   const ProductScreen({super.key});
@@ -11,7 +13,7 @@ class ProductScreen extends StatefulWidget {
   State<ProductScreen> createState() => _ProductScreenState();
 }
 
-var productData;
+//var productData;
 late double width;
 late double height;
 late int productIndex;
@@ -24,13 +26,21 @@ class _ProductScreenState extends State<ProductScreen> {
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
     height = MediaQuery.of(context).size.height;
-    productData = ModalRoute.of(context)?.settings.arguments as Map;
+    //productData = ModalRoute.of(context)?.settings.arguments as Map;
 
     return Scaffold(
       backgroundColor: primaryColor,
 
       //appbar
       appBar: AppBar(
+        leading: IconButton(
+          onPressed: (){
+
+            Navigator.pop(context, "refresh");
+
+          },
+          icon: Icon(Icons.arrow_back_rounded),
+        ),
         backgroundColor: Colors.white,
         actions: [
           //favourite button
@@ -48,11 +58,11 @@ class _ProductScreenState extends State<ProductScreen> {
 
               },
               icon: Icon(
-                (!productData['favourite'])
+                (!productData1[productIndex]['favourite'])
                     ? Icons.favorite_border_outlined
                     : Icons.favorite,
                 size: 20,
-                color: (!productData['favourite']) ? Colors.black : Colors.red,
+                color: (!productData1[productIndex]['favourite']) ? Colors.black : Colors.red,
               ),
             ),
           ),
@@ -92,7 +102,7 @@ class _ProductScreenState extends State<ProductScreen> {
                           borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
                           color: Colors.white,
                       ),
-                      child: Image.asset(productData['img'], fit: BoxFit.cover,),
+                      child: Image.asset(productData1[productIndex]['img'], fit: BoxFit.cover,),
                                     ),
                   ),
                   const SizedBox(height: 10,),
@@ -111,7 +121,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           //PRODUCT NAME
-                          Text(productData['name'], style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
+                          Text(productData1[productIndex]['name'], style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
 
                           //RATING, REVIEW, LIKES, COMMENTS
                           Padding(
@@ -132,8 +142,8 @@ class _ProductScreenState extends State<ProductScreen> {
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Icon(Icons.star, color: lightGreenContainer, size: 20,),
-                                      Text(' ${productData['rating']}', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14),),
-                                      Text('  ${productData['review']} reviews', style:  TextStyle(color: lightFontColor, fontWeight: FontWeight.w500, fontSize: 10),),
+                                      Text(' ${productData1[productIndex]['rating']}', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14),),
+                                      Text('  ${productData1[productIndex]['review']} reviews', style:  TextStyle(color: lightFontColor, fontWeight: FontWeight.w500, fontSize: 10),),
                                     ],
                                   ),
                                 ),
@@ -150,7 +160,7 @@ class _ProductScreenState extends State<ProductScreen> {
                                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Icon(Icons.thumb_up, color: lightGreenContainer, size: 20,),
-                                      Text(' ${productData['like']}%', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14),),
+                                      Text(' ${productData1[productIndex]['like']}%', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14),),
                                     ],
                                   ),
                                 ),
@@ -187,7 +197,7 @@ class _ProductScreenState extends State<ProductScreen> {
                               ),
                               child: Row(
                                 children: [
-                                  Text(' \$${productData['price']}', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),),
+                                  Text(' \$${productData1[productIndex]['price']}', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),),
                                   const SizedBox(width: 10),
                                   Text('from \$14 per month', style:  TextStyle(color: lightFontColor, fontWeight: FontWeight.w500, fontSize: 13),),
                                   const Spacer(),
@@ -199,7 +209,7 @@ class _ProductScreenState extends State<ProductScreen> {
 
                           Padding(
                             padding: const EdgeInsets.only(top: 8.0),
-                            child: Text(productData['description']),
+                            child: Text(productData1[productIndex]['description']),
                           )
                         ],
                       ),
@@ -219,7 +229,7 @@ class _ProductScreenState extends State<ProductScreen> {
             child: Column(
               children: [
                 //BUTTON
-                (productData['inCart']) ? goToCartBtn() : addToCartBtn(),
+                (productData1[productIndex]['inCart']) ? goToCartBtn() : addToCartBtn(),
 
                 //ADDRESS OF DELIVERY
                 const Spacer(),
@@ -250,7 +260,9 @@ class _ProductScreenState extends State<ProductScreen> {
                 borderRadius: BorderRadiusDirectional.circular(15))),
         onPressed: () {
           setState(() {
-            productData['inCart'] = true;
+            productData1[productIndex]['inCart'] = true;
+            productData1[productIndex]['quantity'] = 1;
+            carList.add(productData1[productIndex]);
           });
         },
         child: Text(
@@ -272,8 +284,16 @@ class _ProductScreenState extends State<ProductScreen> {
             backgroundColor: lightGreenContainer,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadiusDirectional.circular(15))),
-        onPressed: () {
-          Navigator.of(context).pushNamed('/cart');
+        onPressed: ()async {
+            totalAmt = getTotal();
+            String? refresh = await Navigator.push(context, MaterialPageRoute(builder: (context) => Cart()));
+
+            if(refresh == "refresh"){
+              setState(() {
+
+              });
+            }
+
         },
         child: Text(
           'Go to cart',

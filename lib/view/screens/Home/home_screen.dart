@@ -5,7 +5,8 @@ import 'package:appmania/utils/users/user_data.dart';
 import 'package:flutter/material.dart';
 import 'package:scroll_shadow_container/scroll_shadow_container.dart';
 
-import '../product_screen.dart';
+import '../Cart/cart_screen.dart';
+import '../Product/product_screen.dart';
 import 'glass_morphism.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -66,7 +67,7 @@ class _HomeScreenState extends State<HomeScreen> {
       centerTitle: true,
       leading: GestureDetector(
         onTap: () {
-          navigateTo('/user');
+          Navigator.of(context).pushNamed('/user');
         },
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -101,7 +102,10 @@ class _HomeScreenState extends State<HomeScreen> {
       actions: [
         GestureDetector(
           onTap: () {
-            navigateTo('/cart');
+            setState(() {
+              totalAmt = getTotal();
+              Navigator.of(context).pushNamed('/cart');
+            });
           },
           child: Container(
             margin: const EdgeInsets.all(8),
@@ -393,9 +397,17 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget productContainer(
       {double? rightMargin, double? leftMargin, required int index}) {
     return GestureDetector(
-      onTap: (){
-        Navigator.of(context).pushNamed('/product', arguments: productData1[index]);
+      onTap: ()async{
+
         productIndex = index;
+        String? refresh = await Navigator.push(context, MaterialPageRoute(builder: (context) => ProductScreen()));
+
+        if(refresh == "refresh"){
+          setState(() {
+
+          });
+        }
+
       },
       child: Container(
         height: 200,
@@ -602,7 +614,4 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  void navigateTo(String screenName) {
-    Navigator.of(context).pushNamed(screenName);
-  }
 }
