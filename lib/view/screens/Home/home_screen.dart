@@ -400,7 +400,7 @@ class _HomeScreenState extends State<HomeScreen> {
       onTap: ()async{
 
         productIndex = index;
-        String? refresh = await Navigator.push(context, MaterialPageRoute(builder: (context) => ProductScreen()));
+        String? refresh = await Navigator.push(context, MaterialPageRoute(builder: (context) => const ProductScreen()));
 
         if(refresh == "refresh"){
           setState(() {
