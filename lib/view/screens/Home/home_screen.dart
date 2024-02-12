@@ -478,8 +478,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                   children: [
                                     //product image
                                     Container(
+                                      width: double.infinity,
                                       alignment: Alignment.center,
                                       decoration: BoxDecoration(
+                                        color: Colors.white,
                                           borderRadius:
                                               BorderRadiusDirectional.circular(
                                                   15)),
