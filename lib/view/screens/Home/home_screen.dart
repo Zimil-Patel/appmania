@@ -1,4 +1,5 @@
 import 'package:appmania/utils/colors/colors.dart';
+import 'package:appmania/utils/lists/cart_list.dart';
 import 'package:appmania/utils/lists/image_list.dart';
 import 'package:appmania/utils/lists/product_data.dart';
 import 'package:appmania/utils/users/user_data.dart';
@@ -101,11 +102,15 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       actions: [
         GestureDetector(
-          onTap: () {
-            setState(() {
-              totalAmt = getTotal();
-              Navigator.of(context).pushNamed('/cart');
-            });
+          onTap: ()async {
+            totalAmt = getTotal();
+            String? refresh = await Navigator.push(context, MaterialPageRoute(builder: (context) => const Cart()));
+
+            if(refresh == "refresh"){
+              setState(() {
+
+              });
+            }
           },
           child: Container(
             margin: const EdgeInsets.all(8),
@@ -457,11 +462,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                           borderRadius:
                                               BorderRadiusDirectional.circular(
                                                   15)),
-                                      child: const Text(
-                                        '+ Add',
-                                        style: TextStyle(
-                                            fontSize: 10, color: Colors.blue),
-                                      ),
+                                      child: (!productData1[index]['inCart']) ? miniCartBtn('+ Add', index) : miniCartBtn('✔️', index)
                                     ),
                                   ),
                                 ],
@@ -616,4 +617,27 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
+  Widget miniCartBtn(String str, int index){
+
+    return InkWell(
+      onTap: (){
+
+        productData1[index]['inCart'] = true;
+        productData1[index]['quantity'] = 1;
+        carList.add(productData1[index]);
+        setState(() {
+
+        });
+      },
+      child: Text(
+        str,
+        style: const TextStyle(
+            fontSize: 10, color: Colors.blue),
+      ),
+    );
+
+  }
+
+
 }
+

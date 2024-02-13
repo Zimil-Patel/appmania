@@ -286,7 +286,7 @@ class _ProductScreenState extends State<ProductScreen> {
                 borderRadius: BorderRadiusDirectional.circular(15))),
         onPressed: ()async {
             totalAmt = getTotal();
-            String? refresh = await Navigator.push(context, MaterialPageRoute(builder: (context) => Cart()));
+            String? refresh = await Navigator.push(context, MaterialPageRoute(builder: (context) => const Cart()));
 
             if(refresh == "refresh"){
               setState(() {
