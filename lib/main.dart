@@ -5,6 +5,7 @@ import 'package:appmania/view/screens/Splash/splash_screen.dart';
 import 'package:appmania/view/screens/User/user_screen.dart';
 import 'package:flutter/material.dart';
 
+//Good morning...
 void main() {
   runApp(MaterialApp(
     title: 'Digital Cart',

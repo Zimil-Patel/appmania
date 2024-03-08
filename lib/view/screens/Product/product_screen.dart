@@ -18,10 +18,7 @@ late double width;
 late double height;
 late int productIndex;
 
-
 class _ProductScreenState extends State<ProductScreen> {
-
-
   @override
   Widget build(BuildContext context) {
     width = MediaQuery.of(context).size.width;
@@ -34,12 +31,10 @@ class _ProductScreenState extends State<ProductScreen> {
       //appbar
       appBar: AppBar(
         leading: IconButton(
-          onPressed: (){
-
+          onPressed: () {
             Navigator.pop(context, "refresh");
-
           },
-          icon: Icon(Icons.arrow_back_rounded),
+          icon: const Icon(Icons.arrow_back_rounded),
         ),
         backgroundColor: Colors.white,
         actions: [
@@ -51,18 +46,19 @@ class _ProductScreenState extends State<ProductScreen> {
                 borderRadius: BorderRadiusDirectional.circular(100)),
             child: IconButton(
               onPressed: () {
-
                 setState(() {
-                  productData1[productIndex]['favourite'] = !productData1[productIndex]['favourite'];
+                  productData1[productIndex]['favourite'] =
+                      !productData1[productIndex]['favourite'];
                 });
-
               },
               icon: Icon(
                 (!productData1[productIndex]['favourite'])
                     ? Icons.favorite_border_outlined
                     : Icons.favorite,
                 size: 20,
-                color: (!productData1[productIndex]['favourite']) ? Colors.black : Colors.red,
+                color: (!productData1[productIndex]['favourite'])
+                    ? Colors.black
+                    : Colors.red,
               ),
             ),
           ),
@@ -93,35 +89,49 @@ class _ProductScreenState extends State<ProductScreen> {
               elevation: MaterialElevation.the4dp,
               child: Column(
                 children: [
-                  
                   //IMAGE CONTAINER
                   Expanded(
                     child: Container(
                       alignment: Alignment.center,
                       decoration: const BoxDecoration(
-                          borderRadius: BorderRadius.only(bottomLeft: Radius.circular(30), bottomRight: Radius.circular(30)),
-                          color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(30),
+                            bottomRight: Radius.circular(30)),
+                        color: Colors.white,
                       ),
-                      child: Image.asset(productData1[productIndex]['img'], fit: BoxFit.cover,),
-                                    ),
+                      child: Image.asset(
+                        productData1[productIndex]['img'],
+                        fit: BoxFit.cover,
+                      ),
+                    ),
                   ),
-                  const SizedBox(height: 10,),
-                  
+                  const SizedBox(
+                    height: 10,
+                  ),
+
                   //DESCRIPTION OF PRODUCT
                   Container(
                     height: height / 2.2,
                     width: width,
-                    padding: const EdgeInsets.only(top: 24, left: 24, right: 24),
+                    padding:
+                        const EdgeInsets.only(top: 24, left: 24, right: 24),
                     decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.only(topRight: Radius.circular(30), topLeft: Radius.circular(30))
-                    ),
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            topRight: Radius.circular(30),
+                            topLeft: Radius.circular(30))),
                     child: SingleChildScrollView(
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           //PRODUCT NAME
-                          Text(productData1[productIndex]['name'], style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 20),),
+                          Text(
+                            productData1[productIndex]['name'],
+                            style: const TextStyle(
+                                color: Colors.black,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 20),
+                          ),
 
                           //RATING, REVIEW, LIKES, COMMENTS
                           Padding(
@@ -129,21 +139,38 @@ class _ProductScreenState extends State<ProductScreen> {
                             child: Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-
                                 //RATING AND REVIEW
                                 Container(
                                   margin: const EdgeInsets.only(right: 10),
                                   padding: const EdgeInsets.all(4),
                                   decoration: BoxDecoration(
-                                    borderRadius: BorderRadiusDirectional.circular(8),
-                                    border: Border.all(color: Colors.grey.shade400)
-                                  ),
+                                      borderRadius:
+                                          BorderRadiusDirectional.circular(8),
+                                      border: Border.all(
+                                          color: Colors.grey.shade400)),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Icon(Icons.star, color: lightGreenContainer, size: 20,),
-                                      Text(' ${productData1[productIndex]['rating']}', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14),),
-                                      Text('  ${productData1[productIndex]['review']} reviews', style:  TextStyle(color: lightFontColor, fontWeight: FontWeight.w500, fontSize: 10),),
+                                      Icon(
+                                        Icons.star,
+                                        color: lightGreenContainer,
+                                        size: 20,
+                                      ),
+                                      Text(
+                                        ' ${productData1[productIndex]['rating']}',
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14),
+                                      ),
+                                      Text(
+                                        '  ${productData1[productIndex]['review']} reviews',
+                                        style: TextStyle(
+                                            color: lightFontColor,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 10),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -153,14 +180,26 @@ class _ProductScreenState extends State<ProductScreen> {
                                   margin: const EdgeInsets.only(right: 10),
                                   padding: const EdgeInsets.all(4),
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadiusDirectional.circular(8),
-                                      border: Border.all(color: Colors.grey.shade400)
-                                  ),
+                                      borderRadius:
+                                          BorderRadiusDirectional.circular(8),
+                                      border: Border.all(
+                                          color: Colors.grey.shade400)),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Icon(Icons.thumb_up, color: lightGreenContainer, size: 20,),
-                                      Text(' ${productData1[productIndex]['like']}%', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14),),
+                                      Icon(
+                                        Icons.thumb_up,
+                                        color: lightGreenContainer,
+                                        size: 20,
+                                      ),
+                                      Text(
+                                        ' ${productData1[productIndex]['like']}%',
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -169,14 +208,26 @@ class _ProductScreenState extends State<ProductScreen> {
                                 Container(
                                   padding: const EdgeInsets.all(4),
                                   decoration: BoxDecoration(
-                                      borderRadius: BorderRadiusDirectional.circular(8),
-                                      border: Border.all(color: Colors.grey.shade400)
-                                  ),
+                                      borderRadius:
+                                          BorderRadiusDirectional.circular(8),
+                                      border: Border.all(
+                                          color: Colors.grey.shade400)),
                                   child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Icon(Icons.question_answer_rounded, color: Colors.grey.shade400, size: 20,),
-                                      Text('8', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w500, fontSize: 14),),
+                                      Icon(
+                                        Icons.question_answer_rounded,
+                                        color: Colors.grey.shade400,
+                                        size: 20,
+                                      ),
+                                      const Text(
+                                        '8',
+                                        style: TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w500,
+                                            fontSize: 14),
+                                      ),
                                     ],
                                   ),
                                 ),
@@ -190,18 +241,35 @@ class _ProductScreenState extends State<ProductScreen> {
                             child: Container(
                               height: 50,
                               margin: const EdgeInsets.only(right: 10),
-                              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 14),
+                              padding: const EdgeInsets.symmetric(
+                                  vertical: 4, horizontal: 14),
                               decoration: BoxDecoration(
-                                  borderRadius: BorderRadiusDirectional.circular(14),
-                                  color: primaryColor
-                              ),
+                                  borderRadius:
+                                      BorderRadiusDirectional.circular(14),
+                                  color: primaryColor),
                               child: Row(
                                 children: [
-                                  Text(' \$${productData1[productIndex]['price']}', style: const TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 16),),
+                                  Text(
+                                    ' \$${productData1[productIndex]['price']}',
+                                    style: const TextStyle(
+                                        color: Colors.black,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 16),
+                                  ),
                                   const SizedBox(width: 10),
-                                  Text('from \$14 per month', style:  TextStyle(color: lightFontColor, fontWeight: FontWeight.w500, fontSize: 13),),
+                                  Text(
+                                    'from \$14 per month',
+                                    style: TextStyle(
+                                        color: lightFontColor,
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 13),
+                                  ),
                                   const Spacer(),
-                                  Icon(Icons.info_outline, color: Colors.grey.shade400, size: 24,),
+                                  Icon(
+                                    Icons.info_outline,
+                                    color: Colors.grey.shade400,
+                                    size: 24,
+                                  ),
                                 ],
                               ),
                             ),
@@ -209,7 +277,8 @@ class _ProductScreenState extends State<ProductScreen> {
 
                           Padding(
                             padding: const EdgeInsets.only(top: 8.0),
-                            child: Text(productData1[productIndex]['description']),
+                            child:
+                                Text(productData1[productIndex]['description']),
                           )
                         ],
                       ),
@@ -229,7 +298,9 @@ class _ProductScreenState extends State<ProductScreen> {
             child: Column(
               children: [
                 //BUTTON
-                (productData1[productIndex]['inCart']) ? goToCartBtn() : addToCartBtn(),
+                (productData1[productIndex]['inCart'])
+                    ? goToCartBtn()
+                    : addToCartBtn(),
 
                 //ADDRESS OF DELIVERY
                 const Spacer(),
@@ -284,16 +355,14 @@ class _ProductScreenState extends State<ProductScreen> {
             backgroundColor: lightGreenContainer,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadiusDirectional.circular(15))),
-        onPressed: ()async {
-            totalAmt = getTotal();
-            String? refresh = await Navigator.push(context, MaterialPageRoute(builder: (context) => const Cart()));
+        onPressed: () async {
+          totalAmt = getTotal();
+          String? refresh = await Navigator.push(
+              context, MaterialPageRoute(builder: (context) => const Cart()));
 
-            if(refresh == "refresh"){
-              setState(() {
-
-              });
-            }
-
+          if (refresh == "refresh") {
+            setState(() {});
+          }
         },
         child: Text(
           'Go to cart',

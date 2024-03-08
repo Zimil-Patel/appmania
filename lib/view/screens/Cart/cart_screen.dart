@@ -19,7 +19,6 @@ double totalAmt = getTotal();
 class _CartState extends State<Cart> {
   @override
   Widget build(BuildContext context) {
-
     width = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: primaryColor,
@@ -29,7 +28,7 @@ class _CartState extends State<Cart> {
           onPressed: () {
             Navigator.pop(context, "refresh");
           },
-          icon: Icon(Icons.arrow_back_rounded),
+          icon: const Icon(Icons.arrow_back_rounded),
         ),
         title: const Text(
           'Cart',
@@ -86,7 +85,6 @@ class _CartState extends State<Cart> {
             width: width,
             decoration: const BoxDecoration(
               color: Colors.white,
-
             ),
             child: Column(
               children: [
@@ -283,24 +281,22 @@ class _CartState extends State<Cart> {
                                 alignment: Alignment.center,
                                 color: Colors.grey,
                                 onPressed: () {
-
                                   setState(() {
-                                    if(carList[index]['quantity'] > 1){
+                                    if (carList[index]['quantity'] > 1) {
                                       carList[index]['quantity']--;
                                     }
                                     totalAmt = getTotal();
                                   });
 
                                   for (int i = 0;
-                                  i < productData1.length;
-                                  i++) {
+                                      i < productData1.length;
+                                      i++) {
                                     if (carList[index]['id'] ==
                                         productData1[i]['id']) {
                                       productData1[i]['quantity'] =
-                                      carList[index]['quantity'];
+                                          carList[index]['quantity'];
                                     }
                                   }
-
                                 },
                                 icon: const Icon(
                                   Icons.remove,
@@ -371,8 +367,7 @@ class _CartState extends State<Cart> {
             backgroundColor: lightGreenContainer,
             shape: RoundedRectangleBorder(
                 borderRadius: BorderRadiusDirectional.circular(10))),
-        onPressed: () {
-          },
+        onPressed: () {},
         child: Text(
           'Checkout',
           style: TextStyle(
@@ -381,19 +376,14 @@ class _CartState extends State<Cart> {
       ),
     );
   }
-
 }
 
-double getTotal(){
-
+double getTotal() {
   double totalAmt = 0;
 
-  for(int i = 0; i < carList.length; i++){
-
+  for (int i = 0; i < carList.length; i++) {
     totalAmt += (carList[i]['price'] * carList[i]['quantity']);
-
   }
 
   return totalAmt;
-
 }
